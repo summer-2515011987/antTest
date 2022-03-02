@@ -38,9 +38,8 @@ export default {
   data() {
     return {
       mockData: [
-        { description: "人员编码", key: "resourseCode", title: "人员编码" },
+        { description: "人员编码111", key: "resourseCode", title: "人员编码" },
         { description: "张三", key: "zs", title: "张三" },
-
         { description: "李四", key: "ls", title: "李四" }
       ],
       targetKeys: [],
