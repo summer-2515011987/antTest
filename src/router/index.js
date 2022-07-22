@@ -6,11 +6,7 @@ import layout from '@/components/layout'
 // import shop from './shop'
 Vue.use(VueRouter)
 
-// const routes = [
-//   ...login,
-//   ...page,
-//   ...shop
-// ]
+
 const routes = [{
     path: "/",
     redirect: "/login"
@@ -55,11 +51,10 @@ const routes = [{
       }
     ]
   }
-
-
+  // 测试页面
 ]
+ 
 
-console.log(routes);
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
