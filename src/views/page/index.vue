@@ -1,20 +1,22 @@
 <template>
   <div class="page_container">
+    <searching @searchEvent="getData" :nameValue="nameValue" :dateValue="dateValue"></searching>
+
     <!-- 单个文本框校验 -->
     <!-- <a-input placeholder="Basic usage111" style="width:60%" v-model="name" @change="operationName" /> -->
-    <a-input
+    <!-- <a-input
       label="测试表单："
       placeholder="Basic usage222"
       style="width:60%"
       v-model="name"
       @change="operationName1"
-    />
-    <div>
-      <!-- <span v-if="isSpecial" style="color:red">不可以输入英文特殊字符<>"'&</span> -->
-      <!-- 字母汉字，数字 -->
-      <span v-if="isSpecial" style="color:red">只能输入字母，汉字，数字</span>
+    />-->
+    <!-- <div> -->
+    <!-- <span v-if="isSpecial" style="color:red">不可以输入英文特殊字符<>"'&</span> -->
+    <!-- 字母汉字，数字 -->
+    <!-- <span v-if="isSpecial" style="color:red">只能输入字母，汉字，数字</span>
       <span v-else style="color:red"></span>
-    </div>
+    </div>-->
     <!-- <a-button @click="submit">提交</a-button> -->
     <!-- 富文本编辑器 -->
     <!-- 写法1 -->
@@ -111,6 +113,7 @@
   </div>
 </template>
 <script>
+import searching from "@/components/searching";
 import { escape2Html, html2Escape } from "@/utils/textEscape";
 import { quillEditor } from "vue-quill-editor";
 import "quill/dist/quill.core.css";
@@ -122,6 +125,9 @@ export default {
   name: "首页",
   data() {
     return {
+      dateValue: "222",
+      nameValue: "111",
+      filters: {},
       name: "", //接收用户输入的值
       isSpecial: false, //定义一个状态
       editorContent: "",
@@ -183,7 +189,8 @@ export default {
   components: {
     mTextarea,
     modalCom,
-    quillEditor
+    quillEditor,
+    searching
   },
   computed: {},
   beforeMount() {},
@@ -191,6 +198,11 @@ export default {
     // this.getMock();
   },
   methods: {
+    getData(val) {
+      console.log("val111", val);
+      this.filters = val;
+      console.log("this.filters", this.filters);
+    },
     submit() {
       this.isSpecial = false;
       // let regEn = /[<>"'&]/g;//不可以输入英文特殊字符<>"'&
